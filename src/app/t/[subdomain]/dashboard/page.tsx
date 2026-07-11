@@ -32,6 +32,11 @@ export default async function DashboardPage({
     );
   }
 
+  // Route each role to its home. Teacher/student portals arrive in later steps.
+  if (membership.role === "institution_admin" || membership.role === "super_admin") {
+    redirect(`/t/${subdomain}/admin`);
+  }
+
   const signOutWithSubdomain = signOut.bind(null, subdomain);
 
   return (
